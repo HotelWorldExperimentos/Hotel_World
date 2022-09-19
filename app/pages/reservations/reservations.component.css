@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+}
+mat-card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions button{
+  margin-left: 0.9rem;
+}
+
+.info p{
+  padding-left: 0.5rem;
+}
+
+.container{
+  margin: 1rem 2rem;
+}

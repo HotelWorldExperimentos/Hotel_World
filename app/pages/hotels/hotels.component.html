@@ -1,0 +1,70 @@
+<div>
+  <form class="form">
+    <mat-form-field appearance="outline" class="search-form">
+      <span matPrefix> </span>
+      <input type="text" matInput placeholder="Search" name= "search" #searchValue>
+      <button matSuffix mat-button (click)="onTextChanged(searchValue.value)"><mat-icon >search</mat-icon></button>
+    </mat-form-field>
+  </form>
+
+  <section *ngIf="textChanged == false">
+    <h2>Hotels</h2>
+    <mat-accordion class="profiles" *ngFor="let hotel of hotels;let i =index">
+      <mat-expansion-panel class="profile">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{i+1}}. {{hotel.name}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="description">
+          <img class="img" src="{{hotel.img}}">
+          <mat-list class="list">
+            <mat-list-item class="mat-list-item">Country: {{hotel.country}}</mat-list-item>
+            <mat-list-item class="mat-list-item">City: {{hotel.city}}</mat-list-item>
+            <mat-list-item class="mat-list-item">Address: {{hotel.address}}</mat-list-item>
+            <mat-list-item class="mat-list-item">Stars: {{hotel.stars}}</mat-list-item>
+            <mat-list-item class="mat-list-item">Description: {{hotel.description}}</mat-list-item>
+          </mat-list>
+        </div>
+        <div class="actions">
+          <button mat-icon-button class="action">
+            <mat-icon>star_border</mat-icon>
+          </button>
+          <button mat-icon-button class="action" >
+            <mat-icon>calendar_month</mat-icon>
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
+
+  <section *ngIf="textChanged != false">
+    <h2>Hotels</h2>
+    <mat-accordion class="profiles" *ngFor="let hotel of hotels">
+      <mat-expansion-panel class="profile" *ngIf="hotel.name.toLowerCase().includes(search)">
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{hotel.name}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="description">
+          <img class="img" src="{{hotel.img}}">
+          <mat-list class="list">
+            <mat-list-item class="mat-list-item">Country: {{hotel.country}}</mat-list-item>
+            <mat-list-item class="mat-list-item">City: {{hotel.city}}</mat-list-item>
+            <mat-list-item class="mat-list-item">Address: {{hotel.address}}</mat-list-item>
+            <mat-list-item class="mat-list-item">Stars: {{hotel.stars}}</mat-list-item>
+            <mat-list-item class="mat-list-item">Description: {{hotel.description}}</mat-list-item>
+          </mat-list>
+        </div>
+        <div class="actions">
+          <button mat-icon-button class="action">
+            <mat-icon>star_border</mat-icon>
+          </button>
+          <button mat-icon-button class="action" >
+            <mat-icon>calendar_month</mat-icon>
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </section>
+
+
+</div>
+
